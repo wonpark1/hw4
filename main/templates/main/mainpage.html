@@ -35,17 +35,27 @@
         <ul>
           <li>
             <label>
-              <input type="checkbox" data-category="스킨케어·메이크업" /> 스킨케어·메이크업 <em>68</em>
-            </label>
-          </li>
-          <li>
-      <label>
-        <input type="checkbox" data-category="럭셔리뷰티" /> 럭셔리뷰티 <em>40</em>
+        <!-- data-count에 숫자만 넣음 -->
+        <input type="checkbox"
+               data-category="스킨케어·메이크업"
+               data-count="68" />
+        스킨케어·메이크업 <em>68</em>
       </label>
     </li>
     <li>
       <label>
-        <input type="checkbox" data-category="간식·과자·떡" /> 간식·과자·떡 <em>28</em>
+        <input type="checkbox"
+               data-category="럭셔리뷰티"
+               data-count="40" />
+        럭셔리뷰티 <em>40</em>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="checkbox"
+               data-category="간식·과자·떡"
+               data-count="28" />
+        간식·과자·떡 <em>28</em>
       </label>
     </li>
   </ul>
@@ -54,7 +64,10 @@
 
     <section class="prod-zone">
       <header class="sorting-bar">
-        <strong class="total">총 {{ products|length }}건</strong>
+        <strong class="total">
+          총&nbsp;<span id="total-count"></span>건
+           <!--        ↑ 처음엔 공백 → JS가 숫자를 넣음 -->
+        </strong>
         <nav class="sort">
           <a href="#" class="on">추천순</a>
           <a href="#">신상품순</a>
@@ -141,6 +154,6 @@
   <!-- /body-layout -->
 </main>
 
-<!-- js 파일 -->
-<script src="{% static 'js/main/main_page.js'%}"></script>
+<!— js 파일 —>
+<script src="{% static 'js/main/main_page.js' %}" defer></script>
 {% endblock %}
