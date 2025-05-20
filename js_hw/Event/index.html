@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="content">
+      <div id="main_content">
+        <h3>Event challenge</h3>
+        <div>
+          <input type="radio" name="food" id="food1" value="떡볶이" checked />
+          <label for="food1">떡볶이</label>
+
+          <input type="radio" name="food" id="food2" value="순대" checked />
+          <label for="food2">순대</label>
+        </div>
+        <div>
+          <input type="radio" name="gender" id="gender1" value="남성" />
+          <label for="gender1">남성</label>
+
+          <input type="radio" name="gender" id="gender2" value="여성" />
+          <label for="gender2">여성</label>
+        </div>
+        <div>
+          <label for="select">요일 선택:</label>
+          <select id="select">
+            <option value="Mon">월요일</option>
+            <option value="Tue">화요일</option>
+            <option value="Wed">수요일</option>
+            <option value="Thu">목요일</option>
+            <option value="Fri">금요일</option>
+            <option value="Sat">토요일</option>
+            <option value="Sun">일요일</option>
+          </select>
+        </div>
+        <div id="button_box">
+          <button type="button">제출</button>
+        </div>
+      </div>
+    </div>
+    <div id="sub_content">
+      <h3 class="white">당신이 선택한 내용</h3>
+      <div id="food" class="white">좋아하는 음식:</div>
+      <div id="gender" class="white">성별:</div>
+      <div id="day" class="white">요일:</div>
+    </div>
+  </body>
+  <script src="key2.js"></script>
+</html>

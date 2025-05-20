@@ -1,0 +1,285 @@
+/* product detail page - CSS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard", sans-serif;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.product-detail-wrapper {
+  max-width: 1050px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.product-layout {
+  display: flex;
+  gap: 20px;
+  height: 550px;
+}
+
+.product-image {
+  width: 430px;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info {
+  width: 570px;
+  height: 94%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.info-top {
+  flex-direction: column;
+  gap: 20px;
+  font-weight: bold;
+  color: #999;
+}
+.info-header .delivery-type {
+  font-size: 14px;
+  color: #518ef8;
+}
+.product-name {
+  font-size: 24px;
+  margin: 0;
+  line-height: 1.4;
+  color: black;
+}
+
+.price-info {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  padding: 0;
+}
+
+.info-guide {
+  border-radius: 8px;
+  border-top: 1px solid #e2e2e2;
+  color: #a5a5a5;
+  padding-top: 10px;
+  margin-top: 20px;
+  align-items: center;
+  display: flex;
+  gap: 40px;
+  display: flex;
+  padding: 20px 0px 10px;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.info-guide .label {
+  font-family: Pretendard;
+  font-weight: bold;
+  font-size: 14px;
+  color: #a5a5a5;
+  flex-shrink: 0;
+  display: inline-block;
+  width: 80px;
+}
+.info-guide .guide-text {
+  font-family: Pretendard;
+  font-style: normal;
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+  display: inline-block;
+}
+
+/* 상품 선택 */
+.info-selection {
+  color: #a5a5a5;
+  font-family: Pretendard;
+  font-style: normal;
+  border-top: 1px solid #e2e2e2;
+  font-weight: bold;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px 1px 20px;
+  align-items: flex-start;
+  align-self: stretch;
+  border-bottom: 1px solid #e2e2e2;
+}
+.info-selection .label {
+  color: #a5a5a5;
+  font-family: Pretendard;
+  font-style: normal;
+  color: #a5a5a5;
+  font-size: 14px;
+  flex-shrink: 0;
+  display: inline-block;
+  width: 80px;
+}
+.selection-controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  flex-direction: column;
+  border: 1px solid #e1e1e1;
+
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+
+  padding: 5px 10px 15px 10px;
+  flex: 1 0 0;
+}
+
+.selection-controls select {
+  width: 100%;
+  height: 39px;
+
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -1px;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 14px;
+  color: #999;
+
+  appearance: none;
+
+  /* B2 */
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discount-rate {
+  font-size: 28px;
+  color: #ff5000;
+  font-weight: bold;
+}
+
+.sale-price,
+.price {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.quantity-controls {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+.quantity-controls button {
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.quantity-controls input[type="number"] {
+  width: 50px;
+  padding: 8px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  appearance: none;
+  font-weight: bold;
+  -moz-appearance: textfield;
+}
+.quantity-controls input[type="number"]::-webkit-outer-spin-button,
+.quantity-controls input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* 전체 영역 */
+.info-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+/* ─ 금액 행 ─ */
+.total-price {
+  font-family: Pretendard;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  font-weight: 400;
+}
+
+/* 라벨(작게)*/
+.total-price .label {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -1px;
+}
+
+/* 금액 & 단위 */
+
+.total-price .value {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -1px;
+  font-style: normal;
+}
+/* ─ 버튼 ─ */
+.action-buttons {
+  width: 100%;
+}
+
+.action-buttons button {
+  width: 100%;
+  padding: 20px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #5e0080;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: Pretendard;
+}
+
+.add-to-cart {
+  background-color: #5e0080;
+}
+
+.buy-now {
+  background-color: #007bff;
+}

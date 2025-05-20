@@ -1,0 +1,423 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard", sans-serif;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+:root {
+  --purple: #5e0080;
+  --gray-100: #f6f6f6;
+  --gray-200: #e2e2e2;
+  --gray-400: #999;
+  --fs-s: 14px;
+  --fs-m: 16px;
+}
+
+.mp-wrapper {
+  max-width: 1070px; /* ← Figma 아트보드 폭1180 */
+  margin: 40px auto 120px;
+  padding: 0 12px;
+  font-size: var(--fs-m);
+}
+
+.sub-nav {
+  display: none;
+} /* ← 중복 메뉴 제거 */
+
+.category-nav {
+  margin: 0 auto 36px;
+  max-width: 1180px;
+  width: 100%;
+}
+
+.category-nav .category-grid {
+  border: 1px solid var(--gray-200);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4칸×2줄 */
+  justify-items: center; /* 셀 안 글자 가운데 */
+  column-gap: 0; /* 칼럼 사이 간격(필요하면 60~80px 로) */
+  row-gap: 40px; /* 1·2행 사이 간격 */
+  list-style: none;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.category-nav .category-grid li {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -1px;
+  color: #979393;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.category-nav .category-grid li.on {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.category-nav .category-grid li:hover,
+.category-nav .category-grid li:focus {
+  color: var(--purple);
+  text-decoration: underline;
+}
+
+.body-layout {
+  display: grid;
+  grid-template-columns: 212px 1fr; /* ⬅ 필터 폭 212px */
+  gap: 18px;
+}
+
+.filter-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-200);
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+.filter-top h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #c1c1c1;
+  font: 400 13px/1 Pretendard, sans-serif;
+}
+
+.reset .ico {
+  color: #c1c1c1;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+.selected-filter-tags-wrapper {
+  display: flex; /* 태그들을 가로로 나열 */
+  flex-wrap: wrap; /* 태그들이 많아지면 다음 줄로 넘김 */
+  gap: 8px; /* 태그들 사이의 간격 */
+  padding: 10px 0; /* 위아래 여백 */
+  /* border-bottom: 1px solid var(--gray-200); */ /* 필요하다면 구분선 추가 */
+  margin-bottom: 18px; /* 태그 컨테이너와 아래 카테고리 목록 사이 간격 */
+}
+/* === 선택된 카테고리 태그 스타일 시작 === */
+#selected-filter-tags-container {
+  display: none;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 18px;
+  border: 1px solid #dddddd;
+}
+
+.selected-filter-tags-visible {
+  display: flex !important;
+}
+.selected-category-tag {
+  display: none;
+  border-radius: 16px;
+  padding: 4px 10px; /* 이미지와 유사한 padding */
+  font-size: 13px;
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px; /* 이미지의 높이와 유사하게 조정 */
+}
+
+.selected-category-tag .remove-tag {
+  cursor: pointer;
+  font-weight: normal; /* X 아이콘은 bold가 아닌 듯 합니다. */
+  color: #dddddd; /* X 아이콘 색상 */
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 4px;
+  width: 20px; /* SVG width와 동일하게 설정 */
+  height: 20px; /* SVG height와 동일하게 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-category-tag .remove-tag svg {
+  width: 100%;
+  height: 100%;
+}
+/* === 선택된 카테고리 태그 스타일 끝 === */
+.filter-wrap summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.filter-wrap summary::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6' fill='none'%3E%3Cpath d='M3.19978 2.41761L2.34757 3.26982C2.31529 3.30211 2.2763 3.3177 2.23062 3.3166C2.18493 3.31549 2.14595 3.29878 2.11366 3.26647C2.08134 3.23415 2.06519 3.1946 2.06519 3.14781C2.06519 3.10102 2.08134 3.06148 2.11366 3.0292L3.08283 2.05998C3.10064 2.04217 3.11902 2.02964 3.13797 2.02238C3.15692 2.01517 3.17752 2.01156 3.19978 2.01156C3.22207 2.01156 3.24269 2.01517 3.26164 2.02238C3.28056 2.02964 3.29894 2.04217 3.31679 2.05998L4.28931 3.03251C4.3216 3.06482 4.33719 3.10383 4.33608 3.14951C4.33498 3.19516 4.31827 3.23415 4.28595 3.26647C4.25364 3.29878 4.21408 3.31494 4.1673 3.31494C4.12051 3.31494 4.08097 3.29878 4.04869 3.26647L3.19978 2.41761Z' fill='%23999999'/%3E%3C/svg%3E")
+    center/contain no-repeat;
+  transition: transform 0.2s;
+}
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.filter-wrap ul {
+  margin-top: 16px;
+}
+.filter-wrap li {
+  margin-bottom: 18px;
+}
+.filter-wrap input {
+  margin-right: 10px;
+}
+.filter-wrap em {
+  font-style: normal;
+  color: #b7b7b7;
+  margin-left: 6px;
+}
+
+.filter-top .reset:hover {
+  color: #666;
+}
+.filter-top .reset:hover svg {
+  fill: #666;
+}
+
+.prod-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+.total {
+  font-size: 18px;
+  font-weight: 600;
+}
+.sort a {
+  font-size: 14px;
+  color: #666;
+}
+.sort .on {
+  color: #000;
+  font-weight: 600;
+}
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 262px);
+  column-gap: 16px;
+  row-gap: 60px;
+  justify-content: start;
+}
+.card {
+  width: 262px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.thumb {
+  width: 100%;
+  height: 320px;
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 14px;
+}
+.btn-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 36px;
+  border: 0.24px solid #ddd;
+  border-radius: 0.96px;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cart-ico {
+  width: 25.775px;
+  height: 25.775px;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.desc {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: #000;
+}
+.price em {
+  font-style: normal;
+  font-weight: 400;
+  margin-right: 2px;
+}
+
+.card:hover .thumb {
+  outline: 2px solid var(--purple);
+}
+.card:hover .name {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .mp-wrapper {
+    margin: 20px auto 60px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+  .body-layout {
+    grid-template-columns: 1fr;
+  }
+  .filter {
+    order: 2;
+    margin-top: 40px;
+  }
+  .sub-nav {
+    gap: 24px;
+    overflow-x: auto;
+  }
+  .prod-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 24px 16px;
+  }
+  .card {
+    width: auto;
+  }
+  .thumb {
+    height: 200px;
+  }
+}
+.info {
+  padding: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.ship {
+  font-size: 12px;
+  color: #999;
+}
+.name {
+  font-weight: 600;
+  word-break: keep-all;
+  margin: 0;
+}
+.desc {
+  color: #666;
+  margin: 0;
+}
+.price-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+}
+.price-box .del {
+  flex-basis: 100%;
+  display: block;
+  margin-bottom: 1px;
+  text-decoration: line-through;
+  color: #999;
+  font-size: 13px;
+}
+.rate {
+  color: #ff5000;
+  font-weight: 700;
+}
+.discount-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.del-rate {
+  white-space: nowrap;
+}
+.sale {
+  font-size: 16px;
+  font-weight: 700;
+
+  margin-top: 2px;
+}
+.sorting-bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 24px;
+  font-size: 14px;
+}
+
+.sorting-bar .total {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding-left: 0;
+  margin-left: auto;
+}
+
+.sort a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+  padding: 0 12px;
+  position: relative;
+}
+
+.sort a.on {
+  color: #000;
+  font-weight: 600;
+}
+
+.sort a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: var(--gray-200);
+}

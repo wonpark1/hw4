@@ -1,0 +1,39 @@
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: black;
+}
+#content{
+    width: fit-content;
+    padding: 50px;
+    border-radius: 5px;
+    background-color: orange;
+    align-items: center;
+    
+}
+#main_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+#sub_content{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+}
+#button_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.white{
+    color: white;
+}
